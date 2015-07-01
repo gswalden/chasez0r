@@ -37,4 +37,9 @@ var job = new CronJob('0 * 18 * * 1-5', function() {
   'America/New_York'
 );
 
+slack.on('message', function(message) {
+  var channel = slack.getChannelGroupOrDMByID(message.channel);
+  channel.send('help me speak better https://github.com/gswalden/chasez0r/blob/master/config/messages.js');
+});
+
 slack.login();
