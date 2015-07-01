@@ -9,7 +9,8 @@ function getMessage() {
     'time to leaveb0t?',
     'gotta go guys',
     'ride\'s leaving, peace',
-    'gotta get home and find parking'
+    'gotta get home and find parking',
+    'it\'s not time for chickidega but it is'
   ];
 
   var day = now.format('dddd');
