@@ -8,8 +8,8 @@
   "dependencies": {
     "cron": "^1.0.9",
     "moment-timezone": "^0.4.0",
-    "slack-client": "^1.4.1",
-    "unique-random-array": "^1.0.0"
+    "random-item": "^1.0.0",
+    "slack-client": "^1.4.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
