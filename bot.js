@@ -17,7 +17,7 @@ slack.on('error', function(error) {
   console.error("Error: " + error);
 });
 
-var job = new CronJob('0 * 15 * * 1-5', function() {
+var job = new CronJob('0 * 16 * * 1-5', function() {
     /* job begin */
     slack.getDMByName('gregbot').send(messages() + ' #6pm');
   }, function () {
