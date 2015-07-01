@@ -19,7 +19,7 @@ slack.on('error', function(error) {
   console.error("Error: " + error);
 });
 
-var job = new CronJob('0 * 18 * * 1-5', function() {
+var job = new CronJob('10 0 18 * * 1-5', function() {
     // job begin
     if (isChannel) {
       var message = messages();
