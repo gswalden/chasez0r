@@ -7,12 +7,14 @@ var autoReconnect = true;
 var autoMark = true;
 
 var slack = new Slack(token, autoReconnect, autoMark);
-var isChannel;
-var lastMessage;
+var channels = [];
 
 slack.on('open', function() {
   console.log('Joined ' + slack.team.name + '@Slack as ' + slack.self.name);
-  isChannel = slack.getChannelByName('is');
+  channels = channels.concat([
+    slack.getChannelByName('is'),
+    slack.getChannelByName('web')
+  ]);
   slack.getChannelByName('general').leave();
 });
 
@@ -22,14 +24,8 @@ slack.on('error', function(error) {
 
 var job = new CronJob('10 0 18 * * 1-5', function() {
     // job begin
-    if (isChannel) {
-      var message = messages();
-      while (message === lastMessage) {
-        message = messages();
-      }
-      lastMessage = message;
-
-      isChannel.send(message + ' #6pm');
+    if (channels.length) {
+      messages(channels);
     }
   }, function () {
     // job end
