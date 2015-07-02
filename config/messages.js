@@ -25,10 +25,14 @@ function getMessage(channels) {
       if (!channel) return;
 
       var message;
-      do {
-        message = random(list);
-      } while (message === lastMessage);
-      lastMessage = message;
+      if (messages.Special) {
+        message = random(messages.Special);
+      } else {
+        do {
+          message = random(list);
+        } while (message === lastMessage);
+        lastMessage = message;
+      }
 
       channel.send(message + ' #6pm');
     });
