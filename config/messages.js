@@ -38,8 +38,8 @@ function getMessage(channels) {
 function buildList(messages) {
   var list = messages.Everyday;
   var day = now.format('dddd');
-  if (messages.day) {
-    list = list.concat(messages.day);
+  if (messages[day]) {
+    list = list.concat(messages[day]);
   }
   return list;
 }
