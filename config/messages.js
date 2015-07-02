@@ -25,14 +25,10 @@ function getMessage(channels) {
       if (!channel) return;
 
       var message;
-      if (messages.Special) {
-        message = random(messages.Special);
-      } else {
-        do {
-          message = random(list);
-        } while (message === lastMessage);
-        lastMessage = message;
-      }
+      do {
+        message = random(list);
+      } while (list.length > 1 && message === lastMessage);
+      lastMessage = message;
 
       channel.send(message + ' #6pm');
     });
@@ -40,6 +36,10 @@ function getMessage(channels) {
 }
 
 function buildList(messages) {
+  var list;
+  if (messages.Special) {
+    return messages.Special;
+  }
   var list = messages.Everyday;
   var day = now.format('dddd');
   if (messages[day]) {
