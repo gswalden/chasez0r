@@ -1,26 +1,47 @@
 var moment = require('moment-timezone');
 var random = require('random-item');
+var request = require('request');
 
 var now = moment().tz('America/New_York');
+var lastMessage;
 
-function getMessage() {
-  var messages = [
-    'rock n roll!',
-    'time to leaveb0t?',
-    'gotta go guys',
-    'ride\'s leaving, peace',
-    'gotta get home and find parking',
-    'it\'s not time for chickidega but it is'
-  ];
+function getMessage(channels) {
+  request({
+    uri: 'https://api.github.com/gists/1499b5c6c242ce79567d',
+    headers: {
+      'User-Agent': 'gswalden'
+    },
+    json: true
+  }, function(err, res, body) {
+    if (err) {
+      console.log(err);
+      return;
+    }
 
+    var messages = JSON.parse(body.files['messages.json'].content);
+    var list = buildList(messages);
+
+    channels.forEach(function(channel) {
+      if (!channel) return;
+
+      var message;
+      do {
+        message = random(list);
+      } while (message === lastMessage);
+      lastMessage = message;
+
+      channel.send(message + ' #6pm');
+    });
+  });
+}
+
+function buildList(messages) {
+  var list = messages.Everyday;
   var day = now.format('dddd');
-  if (day == 'Thursday') {
-    messages.push('it\'s thursday so have a drink in the courtyard for me!');
-  } else if (day == 'Friday') {
-    messages.push('have great weekend, chasezor out!');
+  if (messages.day) {
+    list = list.concat(messages.day);
   }
-
-  return random(messages);
+  return list;
 }
 
 module.exports = getMessage;

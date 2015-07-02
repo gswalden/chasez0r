@@ -9,6 +9,7 @@
     "cron": "^1.0.9",
     "moment-timezone": "^0.4.0",
     "random-item": "^1.0.0",
+    "request": "^2.58.0",
     "slack-client": "^1.4.1"
   },
   "devDependencies": {
