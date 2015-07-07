@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 gulp.task('develop', function () {
   nodemon({
-    script: 'bot',
+    script: 'bot.js',
     ext: 'js',
   });
 });

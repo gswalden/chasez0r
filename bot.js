@@ -1,8 +1,13 @@
+var token = process.env.SLACK_TOKEN;
+if (!token) {
+  console.log('Please set environment variable SLACK_TOKEN');
+  return;
+}
+
 var Slack = require('slack-client');
 var CronJob = require('cron').CronJob;
 
 var messages = require('./config/messages');
-var token = require('./config/token'); // if dne, make file with syntax: module.exports = 'slack-token';
 var autoReconnect = true;
 var autoMark = true;
 
