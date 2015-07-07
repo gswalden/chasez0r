@@ -15,7 +15,6 @@ slack.on('open', function() {
     slack.getChannelByName('is'),
     slack.getChannelByName('web')
   ]);
-  slack.getChannelByName('general').leave();
 });
 
 slack.on('error', function(error) {
