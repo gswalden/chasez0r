@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "on": "node ./node_modules/heroku-scaler/bin/heroku-scaler.js on",
+    "off": "node ./node_modules/heroku-scaler/bin/heroku-scaler.js off"
   },
   "dependencies": {
     "cron": "^1.0.9",
