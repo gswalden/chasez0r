@@ -40,7 +40,7 @@ var job = new CronJob('10 0 18 * * 1-5', function() {
 slack.on('message', function(message) {
   if (message.getChannelType() == 'DM') {
     var channel = slack.getChannelGroupOrDMByID(message.channel);
-    channel.send('help me speak better https://github.com/gswalden/chasez0r/blob/master/config/messages.js');
+    channel.send('help me speak better https://gist.github.com/gswalden/1499b5c6c242ce79567d');
   }
 });
 
