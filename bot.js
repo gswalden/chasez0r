@@ -17,7 +17,7 @@ var channels = [];
 slack.on('open', function() {
   console.log('Joined ' + slack.team.name + '@Slack as ' + slack.self.name);
   channels = channels.concat([
-    slack.getChannelByName('web')
+    slack.getChannelByName('mbcom')
   ]);
 });
 
